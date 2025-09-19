@@ -260,7 +260,7 @@ document.getElementById('login-form').addEventListener('submit',async e=>{ e.pre
 });
 
 // Добавление ДЗ
-document.getElementById('https://daniel-ohlayan.github.io/classM/#/homework').addEventListener('submit', async e=>{
+document.getElementById('homework-form').addEventListener('submit', async e=>{
     e.preventDefault(); if(!auth.currentUser) return;
     const date=document.getElementById('hw-date').value;
     const subject=document.getElementById('hw-subject').value;
@@ -319,5 +319,6 @@ window.addEventListener('hashchange',router); router();
 </script>
 </body>
 </html>
+
 
 
