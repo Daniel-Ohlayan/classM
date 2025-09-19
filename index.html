@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Класс 6М</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<nav>
+    <div class="logo">Класс 6М</div>
+    <ul class="nav-links">
+        <li><a href="#/">Главная</a></li>
+        <li><a href="#/homework">Домашнее задание</a></li>
+        <li><a href="#/schedule">Расписание</a></li>
+    </ul>
+    <div class="mobile-menu"><span></span><span></span><span></span></div>
+</nav>
+</header>
+
+<main>
+<section id="home" class="hidden">
+    <div class="hero">
+        <h1>Добро пожаловать в класс 6М!</h1>
+        <p>Здесь вы найдёте актуальное домашнее задание, расписание и важные объявления.</p>
+        <a href="#/homework" class="btn">ДЗ</a>
+        <a href="#/schedule" class="btn">Расписание</a>
+    </div>
+
+    <!-- Новости -->
+    <div class="section">
+        <h2>Новости класса</h2>
+        <div id="news-container" class="news-grid"></div>
+    </div>
+
+    <!-- События -->
+    <div class="section">
+        <h2>Ближайшие события</h2>
+        <div id="events-container" class="news-grid"></div>
+    </div>
+</section>
+
+<section id="homework" class="section hidden">
+    <h2>Домашнее задание</h2>
+    <div id="homework-container" class="homework-list"></div>
+</section>
+
+<section id="schedule" class="section hidden">
+    <h2>Расписание</h2>
+    <div id="schedule-container"></div>
+</section>
+
+<section id="admin" class="section hidden">
+    <h2>Админ панель</h2>
+    <form id="login-form" class="login-form">
+        <div class="form-group"><label for="email">Email:</label><input type="email" id="email" required></div>
+        <div class="form-group"><label for="password">Пароль:</label><input type="password" id="password" required></div>
+        <button type="submit">Войти</button>
+    </form>
+
+    <div id="admin-content" class="hidden">
+        <!-- Добавление ДЗ -->
+        <form id="homework-form" class="update-form">
+            <h3>Добавить ДЗ</h3>
+            <div class="form-group"><label for="hw-date">Дата:</label><input type="date" id="hw-date" required></div>
+            <div class="form-group"><label for="hw-subject">Предмет:</label>
+                <select id="hw-subject" required>
+                    <option value="">Выберите предмет</option>
+                    <option value="Математика">Математика</option>
+                    <option value="Русский язык">Русский язык</option>
+                    <option value="Английский язык">Английский язык</option>
+                    <option value="История">История</option>
+                    <option value="Практикум по математике">Практикум по математике</option>
+                    <option value="Дополнительная математика">Дополнительная математика</option>
+                    <option value="Литература">Литература</option>
+                    <option value="Физ-ра">Физ-ра</option>
+                    <option value="Биология">Биология</option>
+                    <option value="Технология">Технология</option>
+                    <option value="ИЗО">ИЗО</option>
+                    <option value="География">География</option>
+                </select>
+            </div>
+            <div class="form-group"><label for="hw-description">Описание:</label><textarea id="hw-description" rows="4" required></textarea></div>
+            <button type="submit">Добавить ДЗ</button>
+        </form>
+
+        <!-- Добавление урока -->
+        <form id="schedule-form" class="update-form">
+            <h3>Добавить урок</h3>
+            <div class="form-group"><label for="sch-day">День недели:</label>
+                <select id="sch-day" required>
+                    <option value="">Выберите день</option>
+                    <option value="Понедельник">Понедельник</option>
+                    <option value="Вторник">Вторник</option>
+                    <option value="Среда">Среда</option>
+                    <option value="Четверг">Четверг</option>
+                    <option value="Пятница">Пятница</option>
+                </select>
+            </div>
+            <div class="form-group"><label for="sch-start-time">Время начала:</label><input type="time" id="sch-start-time" required></div>
+            <div class="form-group"><label for="sch-end-time">Время конца:</label><input type="time" id="sch-end-time" required></div>
+            <div class="form-group"><label for="sch-subject">Предмет:</label>
+                <select id="sch-subject" required>
+                    <option value="">Выберите предмет</option>
+                    <option value="Математика">Математика</option>
+                    <option value="Русский язык">Русский язык</option>
+                    <option value="Английский язык">Английский язык</option>
+                    <option value="История">История</option>
+                    <option value="Практикум по математике">Практикум по математике</option>
+                    <option value="Дополнительная математика">Дополнительная математика</option>
+                    <option value="Литература">Литература</option>
+                    <option value="Физ-ра">Физ-ра</option>
+                    <option value="Биология">Биология</option>
+                    <option value="Технология">Технология</option>
+                    <option value="ИЗО">ИЗО</option>
+                    <option value="География">География</option>
+                </select>
+            </div>
+            <div class="form-group"><label for="sch-teacher">Учитель:</label><input type="text" id="sch-teacher" placeholder="Иванов И.И." required></div>
+            <button type="submit">Добавить урок</button>
+        </form>
+
+        <!-- Добавление новости -->
+        <form id="news-form" class="update-form">
+            <h3>Добавить новость</h3>
+            <div class="form-group"><label for="news-date">Дата:</label><input type="date" id="news-date" required></div>
+            <div class="form-group"><label for="news-title">Заголовок:</label><input type="text" id="news-title" required></div>
+            <div class="form-group"><label for="news-desc">Описание:</label><textarea id="news-desc" rows="3" required></textarea></div>
+            <button type="submit">Добавить новость</button>
+        </form>
+
+        <!-- Добавление события -->
+        <form id="event-form" class="update-form">
+            <h3>Добавить событие</h3>
+            <div class="form-group"><label for="event-date">Дата:</label><input type="date" id="event-date" required></div>
+            <div class="form-group"><label for="event-title">Название:</label><input type="text" id="event-title" required></div>
+            <div class="form-group"><label for="event-desc">Описание:</label><textarea id="event-desc" rows="3" required></textarea></div>
+            <button type="submit">Добавить событие</button>
+        </form>
+
+        <button id="logout">Выйти</button>
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Класс 6М.Все права защищены .</p>
+</footer>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js';
+import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-analytics.js';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js';
+import { getFirestore, collection, addDoc, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyC9lSyqFTIOzXSqSkrXtXOEj_ALTenxuBI",
+    authDomain: "classmoi.firebaseapp.com",
+    projectId: "classmoi",
+    storageBucket: "classmoi.firebasestorage.app",
+    messagingSenderId: "788403886291",
+    appId: "1:788403886291:web:8133da8842420f5d111c26",
+    measurementId: "G-PK5EVYPT24"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+function getHashPath(){ return window.location.hash.slice(1) || '/'; }
+
+function router(){
+    const path = getHashPath();
+    document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+    if(path==='/'||path===''){ document.getElementById('home').classList.remove('hidden'); loadHomework(); loadSchedule(); loadNews(); loadEvents(); }
+    else if(path==='/homework'){ document.getElementById('homework').classList.remove('hidden'); loadHomework(); }
+    else if(path==='/schedule'){ document.getElementById('schedule').classList.remove('hidden'); loadSchedule(); }
+    else if(path==='/adminpan'){ document.getElementById('admin').classList.remove('hidden'); if(auth.currentUser){ document.getElementById('admin-content').classList.remove('hidden'); document.getElementById('login-form').classList.add('hidden'); } }
+    else{ document.getElementById('home').classList.remove('hidden'); loadNews(); loadEvents(); }
+}
+
+// Загрузка ДЗ
+async function loadHomework(){
+    const container = document.getElementById('homework-container');
+    if(!container) return;
+    container.innerHTML='<p>Загрузка...</p>';
+    try{
+        const q=query(collection(db,'homework'), orderBy('date','desc'));
+        const snapshot = await getDocs(q);
+        container.innerHTML='';
+        if(snapshot.empty){ container.innerHTML='<p>Нет заданий.</p>'; return; }
+        snapshot.forEach(doc=>{ const d=doc.data(); const div=document.createElement('div'); div.className='item';
+            div.innerHTML=`<div class="item-date">${new Date(d.date).toLocaleDateString('ru-RU')}</div><div class="item-subject">${d.subject}</div><div class="item-desc">${d.description}</div>`; container.appendChild(div);
+        });
+    } catch(e){ console.error(e); container.innerHTML='<p>Ошибка загрузки.</p>'; }
+}
+
+// Загрузка расписания
+async function loadSchedule(){
+    const container=document.getElementById('schedule-container');
+    if(!container) return;
+    container.innerHTML='<p>Загрузка...</p>';
+    try{
+        const q=query(collection(db,'schedule'), orderBy('day','asc'));
+        const snapshot=await getDocs(q);
+        container.innerHTML='';
+        if(snapshot.empty){ container.innerHTML='<p>Нет уроков.</p>'; return; }
+        const daysMap=new Map();
+        snapshot.forEach(doc=>{ const d=doc.data(); if(!daysMap.has(d.day)) daysMap.set(d.day,[]); daysMap.get(d.day).push(d); });
+        const sortedDays=Array.from(daysMap.entries()).sort((a,b)=>a[0].localeCompare(b[0]));
+        sortedDays.forEach(([day, lessons])=>{
+            lessons.sort((a,b)=>a.startTime.localeCompare(b.startTime));
+            const dayDiv=document.createElement('div'); dayDiv.className='day-section'; dayDiv.innerHTML=`<div class="day-header">${day}</div>`;
+            lessons.forEach(l=>{ const div=document.createElement('div'); div.className='item'; div.innerHTML=`<div class="item-subject">${l.startTime}-${l.endTime} | ${l.subject} (${l.teacher})</div>`; dayDiv.appendChild(div); });
+            container.appendChild(dayDiv);
+        });
+    } catch(e){ console.error(e); container.innerHTML='<p>Ошибка загрузки.</p>'; }
+}
+
+// Загрузка новостей
+async function loadNews(){
+    const container=document.getElementById('news-container'); if(!container) return;
+    container.innerHTML='<p>Загрузка...</p>';
+    try{
+        const q=query(collection(db,'news'), orderBy('date','desc'));
+        const snapshot=await getDocs(q); container.innerHTML='';
+        if(snapshot.empty){ container.innerHTML='<p>Нет новостей.</p>'; return; }
+        snapshot.forEach(doc=>{ const d=doc.data(); const div=document.createElement('div'); div.className='news-card';
+            div.innerHTML=`<div class="news-date">${new Date(d.date).toLocaleDateString('ru-RU')}</div><div class="news-title">${d.title}</div><div class="news-desc">${d.description}</div>`;
+            container.appendChild(div);
+        });
+    } catch(e){ console.error(e); container.innerHTML='<p>Ошибка загрузки.</p>'; }
+}
+
+// Загрузка событий
+async function loadEvents(){
+    const container=document.getElementById('events-container'); if(!container) return;
+    container.innerHTML='<p>Загрузка...</p>';
+    try{
+        const q=query(collection(db,'events'), orderBy('date','asc'));
+        const snapshot=await getDocs(q); container.innerHTML='';
+        if(snapshot.empty){ container.innerHTML='<p>Нет событий.</p>'; return; }
+        snapshot.forEach(doc=>{ const d=doc.data(); const div=document.createElement('div'); div.className='news-card';
+            div.innerHTML=`<div class="news-date">${new Date(d.date).toLocaleDateString('ru-RU')}</div><div class="news-title">${d.title}</div><div class="news-desc">${d.description}</div>`;
+            container.appendChild(div);
+        });
+    } catch(e){ console.error(e); container.innerHTML='<p>Ошибка загрузки.</p>'; }
+}
+
+// Авторизация
+document.getElementById('login-form').addEventListener('submit',async e=>{ e.preventDefault();
+    const email=document.getElementById('email').value; const password=document.getElementById('password').value;
+    try{ await signInWithEmailAndPassword(auth,email,password);
+        document.getElementById('login-form').classList.add('hidden'); document.getElementById('admin-content').classList.remove('hidden'); showAlert('Вход успешен!','success');
+    }catch(e){ showAlert('Ошибка входа: '+e.message,'error'); }
+});
+
+// Добавление ДЗ
+document.getElementById('homework-form').addEventListener('submit', async e=>{
+    e.preventDefault(); if(!auth.currentUser) return;
+    const date=document.getElementById('hw-date').value;
+    const subject=document.getElementById('hw-subject').value;
+    const description=document.getElementById('hw-description').value;
+    try{ await addDoc(collection(db,'homework'),{date,subject,description}); document.getElementById('homework-form').reset(); showAlert('ДЗ добавлено!','success'); loadHomework(); } catch(e){ showAlert('Ошибка: '+e.message,'error'); }
+});
+
+// Добавление урока
+document.getElementById('schedule-form').addEventListener('submit', async e=>{
+    e.preventDefault(); if(!auth.currentUser) return;
+    const day=document.getElementById('sch-day').value;
+    const startTime=document.getElementById('sch-start-time').value;
+    const endTime=document.getElementById('sch-end-time').value;
+    const subject=document.getElementById('sch-subject').value;
+    const teacher=document.getElementById('sch-teacher').value;
+    try{ await addDoc(collection(db,'schedule'),{day,startTime,endTime,subject,teacher}); document.getElementById('schedule-form').reset(); showAlert('Урок добавлен!','success'); loadSchedule(); } catch(e){ showAlert('Ошибка: '+e.message,'error'); }
+});
+
+// Добавление новости
+document.getElementById('news-form').addEventListener('submit', async e=>{
+    e.preventDefault(); if(!auth.currentUser) return;
+    const date=document.getElementById('news-date').value;
+    const title=document.getElementById('news-title').value;
+    const description=document.getElementById('news-desc').value;
+    try{ await addDoc(collection(db,'news'),{date,title,description}); document.getElementById('news-form').reset(); showAlert('Новость добавлена!','success'); loadNews(); } catch(e){ showAlert('Ошибка: '+e.message,'error'); }
+});
+
+// Добавление события
+document.getElementById('event-form').addEventListener('submit', async e=>{
+    e.preventDefault(); if(!auth.currentUser) return;
+    const date=document.getElementById('event-date').value;
+    const title=document.getElementById('event-title').value;
+    const description=document.getElementById('event-desc').value;
+    try{ await addDoc(collection(db,'events'),{date,title,description}); document.getElementById('event-form').reset(); showAlert('Событие добавлено!','success'); loadEvents(); } catch(e){ showAlert('Ошибка: '+e.message,'error'); }
+});
+
+// Выход
+document.getElementById('logout').addEventListener('click', async ()=>{
+    await signOut(auth); document.getElementById('admin-content').classList.add('hidden'); document.getElementById('login-form').classList.remove('hidden'); document.getElementById('login-form').reset();
+    showAlert('Вы вышли из системы.','success');
+});
+
+onAuthStateChanged(auth,user=>{
+    if(user&&getHashPath()==='/adminpan'){ document.getElementById('admin-content').classList.remove('hidden'); document.getElementById('login-form').classList.add('hidden'); }
+    else if(!user&&getHashPath()==='/adminpan'){ document.getElementById('admin-content').classList.add('hidden'); document.getElementById('login-form').classList.remove('hidden'); }
+    if(getHashPath()==='/'||getHashPath()===''){ loadHomework(); loadSchedule(); loadNews(); loadEvents(); }
+});
+
+function showAlert(message,type){
+    const alert=document.createElement('div'); alert.className='alert alert-'+type; alert.textContent=message;
+    const section=document.getElementById('admin'); section.insertBefore(alert,section.firstChild);
+    setTimeout(()=>alert.remove(),3000);
+}
+
+window.addEventListener('hashchange',router); router();
+</script>
+</body>
+</html>
